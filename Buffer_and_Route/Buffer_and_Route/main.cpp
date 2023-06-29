@@ -162,14 +162,14 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
-    // QGraphicsScene oluþturun ve polygonu ekleyin
+    // QGraphicsScene oluÃ¾turun ve polygonu ekleyin
     QGraphicsScene scene;
 
     // Define vectors to store coordinate and polygon information
     std::vector<Point> coordinate_list;
     std::vector<std::vector<Point>> polygon_list;
 
-    std::ifstream file("C:/Users/Lenovo/source/repos/Buffer_and_Route/Buffer_and_Route/Coordinates.txt");
+    std::ifstream file("Coordinates.txt");
     if (file.is_open()) {
         std::string line;
         std::vector<Point> temp_list;
