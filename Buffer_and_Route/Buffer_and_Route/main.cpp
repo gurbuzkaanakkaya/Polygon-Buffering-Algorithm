@@ -161,11 +161,8 @@ double calculateScaleFactor(const std::vector<std::vector<Point>>& polygons, int
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
-
-    // QGraphicsScene oluþturun ve polygonu ekleyin
     QGraphicsScene scene;
-
-    // Define vectors to store coordinate and polygon information
+    
     std::vector<Point> coordinate_list;
     std::vector<std::vector<Point>> polygon_list;
 
@@ -206,8 +203,7 @@ int main(int argc, char* argv[])
     std::vector<Point> vertices_list_t;
 
     std::tie(vertices_list, vertices_list_t) = buffered_point(polygon_list,2000);
-
-    // Calculate the scaling factor based on the desired width and height
+    
     int desiredWidth = 800;  
     int desiredHeight = 600; 
 
@@ -215,25 +211,21 @@ int main(int argc, char* argv[])
         // Create a QPolygonF to store the polygon's points
         QPolygonF qPolygon;
 
-        // Add the points of the polygon to the QPolygonF with scaling
         for (const auto& point : polygon) {
             
             qPolygon << QPointF(point.x * (calculateScaleFactor(vertices_list, desiredWidth, desiredHeight)),
                                 point.y * (calculateScaleFactor(vertices_list, desiredWidth, desiredHeight)));
         }
 
-        // Create a QGraphicsPolygonItem and set its polygon
         QGraphicsPolygonItem* polygonItem = new QGraphicsPolygonItem(qPolygon);
 
         // Add the polygon item to the scene
         scene.addItem(polygonItem);
     }
 
-    // Calculate the scene rectangle based on the scaled polygons
     QRectF sceneRect = scene.itemsBoundingRect();
     scene.setSceneRect(sceneRect);
 
-    // Create a QGraphicsView and use it to display the scene
     QGraphicsView view(&scene);
     view.resize(desiredWidth, desiredHeight);
     view.show();
