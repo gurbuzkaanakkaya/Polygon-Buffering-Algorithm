@@ -14,45 +14,6 @@
 #include "Buffer.h"
 #include "Geometry.h"
 
-double haversine_distance(double latitude1, double longitude1, double latitude2, double longitude2) {
-    const double earth_radius = 6371000.0;
-
-    latitude1_radian   = latitude1 * M_PI / 180.0;
-    longitude1_radian  = longitude1 * M_PI / 180.0;
-    latitude2_radian   = latitude2 * M_PI / 180.0;
-    longitude2_radian  = longitude2 * M_PI / 180.0;
-
-    delta_lat          = latitude2_radian - latitude1_radian;
-    delta_lon          = longitude2_radian - longitude1_radian;
-
-    center_angle_of_circle_arc = std::sin(delta_lat / 2) * std::sin(delta_lat / 2) +
-        std::cos(latitude1_radian) * std::cos(latitude2_radian) *
-        std::sin(delta_lon / 2) * std::sin(delta_lon / 2);
-
-    total_angle_of_the_circular_arc = 2 * std::atan2(std::sqrt(center_angle_of_circle_arc),
-        std::sqrt(1 - center_angle_of_circle_arc));
-
-    distance = earth_radius * total_angle_of_the_circular_arc;
-    return distance;
-}
-
-bool is_vertex_convex(const std::vector<Point>& vertices, int vertex_index) {
-
-    int size_of_list = vertices.size();
-   
-    coordinate_x1 = vertices[(vertex_index - 1 + size_of_list) % size_of_list].x;
-    coordinate_y1 = vertices[(vertex_index - 1 + size_of_list) % size_of_list].y;
-    coordinate_x2 = vertices[vertex_index].x;
-    coordinate_y2 = vertices[vertex_index].y;
-    coordinate_x3 = vertices[(vertex_index + 1) % size_of_list].x;
-    coordinate_y3 = vertices[(vertex_index + 1) % size_of_list].y;
-
-    cross_product = (coordinate_x2 - coordinate_x1) * (coordinate_y3 - coordinate_y2) -
-        (coordinate_y2 - coordinate_y1) * (coordinate_x3 - coordinate_x2);
-
-    return cross_product > 0;
-}
-
 std::pair<std::vector<std::vector<Point>>, std::vector<Point>> buffered_point(const std::vector<std::vector<Point>>& poly_list, double distance) {
     std::vector<std::vector<Point>> vertices_list;
     std::vector<Point> vertices_list_t;
@@ -115,6 +76,45 @@ std::pair<std::vector<std::vector<Point>>, std::vector<Point>> buffered_point(co
     return std::make_pair(vertices_list, vertices_list_t);
 }
 
+double haversine_distance(double latitude1, double longitude1, double latitude2, double longitude2) {
+    const double earth_radius = 6371000.0;
+
+    latitude1_radian   = latitude1 * M_PI / 180.0;
+    longitude1_radian  = longitude1 * M_PI / 180.0;
+    latitude2_radian   = latitude2 * M_PI / 180.0;
+    longitude2_radian  = longitude2 * M_PI / 180.0;
+
+    delta_lat          = latitude2_radian - latitude1_radian;
+    delta_lon          = longitude2_radian - longitude1_radian;
+
+    center_angle_of_circle_arc = std::sin(delta_lat / 2) * std::sin(delta_lat / 2) +
+        std::cos(latitude1_radian) * std::cos(latitude2_radian) *
+        std::sin(delta_lon / 2) * std::sin(delta_lon / 2);
+
+    total_angle_of_the_circular_arc = 2 * std::atan2(std::sqrt(center_angle_of_circle_arc),
+        std::sqrt(1 - center_angle_of_circle_arc));
+
+    distance = earth_radius * total_angle_of_the_circular_arc;
+    return distance;
+}
+
+bool is_vertex_convex(const std::vector<Point>& vertices, int vertex_index) {
+
+    int size_of_list = vertices.size();
+   
+    coordinate_x1 = vertices[(vertex_index - 1 + size_of_list) % size_of_list].x;
+    coordinate_y1 = vertices[(vertex_index - 1 + size_of_list) % size_of_list].y;
+    coordinate_x2 = vertices[vertex_index].x;
+    coordinate_y2 = vertices[vertex_index].y;
+    coordinate_x3 = vertices[(vertex_index + 1) % size_of_list].x;
+    coordinate_y3 = vertices[(vertex_index + 1) % size_of_list].y;
+
+    cross_product = (coordinate_x2 - coordinate_x1) * (coordinate_y3 - coordinate_y2) -
+        (coordinate_y2 - coordinate_y1) * (coordinate_x3 - coordinate_x2);
+
+    return cross_product > 0;
+}
+
 double calculateScaleFactor(const std::vector<std::vector<Point>>& polygons, int desiredWidth, int desiredHeight)
 {
     double maxX = std::numeric_limits<double>::min();
@@ -132,11 +132,9 @@ double calculateScaleFactor(const std::vector<std::vector<Point>>& polygons, int
         }
     }
 
-    // Calculate the scaling factor based on the desired width and height
     double scaleX = desiredWidth / maxX;
     double scaleY = desiredHeight / maxY;
 
-    // Choose the smaller scaling factor to ensure the polygons fit within the desired size
     double scaleFactor = std::min(scaleX, scaleY);
 
     return scaleFactor * 25;
