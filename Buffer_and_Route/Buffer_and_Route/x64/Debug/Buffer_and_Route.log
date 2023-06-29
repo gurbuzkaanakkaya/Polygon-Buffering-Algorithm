@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\Lenovo\source\repos\Buffer_and_Route\Buffer_and_Route\main.cpp(1,1): warning C4828: The file contains a character starting at offset 0x1afa that is illegal in the current source character set (codepage 65001).
+  Buffer_and_Route.vcxproj -> C:\Users\Lenovo\source\repos\Buffer_and_Route\x64\Debug\Buffer_and_Route.exe

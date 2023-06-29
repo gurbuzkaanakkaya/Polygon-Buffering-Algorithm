@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Buffer_and_Route", "Buffer_and_Route\Buffer_and_Route.vcxproj", "{6DC1085B-CFDE-469F-AC26-A2EA2E6684E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DC1085B-CFDE-469F-AC26-A2EA2E6684E0}.Debug|x64.ActiveCfg = Debug|x64
+		{6DC1085B-CFDE-469F-AC26-A2EA2E6684E0}.Debug|x64.Build.0 = Debug|x64
+		{6DC1085B-CFDE-469F-AC26-A2EA2E6684E0}.Release|x64.ActiveCfg = Release|x64
+		{6DC1085B-CFDE-469F-AC26-A2EA2E6684E0}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F888E6EA-08A0-47A2-B3FE-C6C814600CFF}
+	EndGlobalSection
+EndGlobal
