@@ -3,33 +3,15 @@
 #include <QGraphicsScene>
 #include <QGraphicsPolygonItem>
 #include <QGraphicsView>
-#include <QPolygonF>
-#include <boost/geometry.hpp>
-#include <boost/geometry/geometries/linestring.hpp>
+#include <QPolygonF>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <deque>
-#include <boost/polygon/polygon.hpp>
+#include <deque>
 #include "Buffer.h"
 #include "Geometry.h"
 
-using namespace std;
-
-
-//std::vector<BoostPolygon> boost_polygon(const std::vector<std::vector<Point>>& vertices_list) {
-//    std::vector<BoostPolygon> boost_polygons;
-//
-//    for (const auto& vertices : vertices_list) {
-//        BoostPolygon boost_polygon;
-//        for (const auto& vertex : vertices) {
-//            boost::polygon::set_points(boost_polygon, vertex.x, vertex.y);
-//        }
-//        boost_polygons.push_back(boost_polygon);
-//    }
-//
-//    return boost_polygons;
-//}
+using namespace std;
 
 double haversine_distance(double latitude1, double longitude1, double latitude2, double longitude2) {
     const double earth_radius = 6371000.0;
