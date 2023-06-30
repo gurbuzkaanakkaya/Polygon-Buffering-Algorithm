@@ -4,6 +4,8 @@
 #include "Buffer_and_Route.h"
 #include "Buffer.h"
 
+const double ignored_value_d{ 0.000000000000001 };
+
 double latitude1_radian;
 double longitude1_radian;
 double latitude2_radian;
