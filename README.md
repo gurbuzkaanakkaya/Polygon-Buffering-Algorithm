@@ -52,7 +52,7 @@ The project reads data from a file called "Coordinates.txt" and processes coordi
   
 
   
-## Documentation
+## Output
 
 ![b2564d6c-8b85-4304-a743-00e923670a1a](https://github.com/gurbuzkaanakkaya/Polygon-Buffering-Algorithm/assets/103320421/8f239647-180b-43d0-ab02-5b5fc6cef9ac)
 
