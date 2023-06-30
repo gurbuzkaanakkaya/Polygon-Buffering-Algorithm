@@ -56,13 +56,13 @@ double haversine_distance(double latitude1, double longitude1, double latitude2,
 
 bool is_vertex_convex(const vector<Point>& vertices, int vertex_index) {
 
-    int size_of_list = vertices.size();
+    int size_of_list  = vertices.size();
    
-    latitude1_radian = vertices[(vertex_index - 1 + size_of_list) % size_of_list].x;
+    latitude1_radian  = vertices[(vertex_index - 1 + size_of_list) % size_of_list].x;
     longitude1_radian = vertices[(vertex_index - 1 + size_of_list) % size_of_list].y;
-    latitude2_radian = vertices[vertex_index].x;
+    latitude2_radian  = vertices[vertex_index].x;
     longitude2_radian = vertices[vertex_index].y;
-    latitude3_radian = vertices[(vertex_index + 1) % size_of_list].x;
+    latitude3_radian  = vertices[(vertex_index + 1) % size_of_list].x;
     longitude3_radian = vertices[(vertex_index + 1) % size_of_list].y;
 
     cross_product = (latitude2_radian - latitude1_radian) * (longitude3_radian - longitude2_radian) -
