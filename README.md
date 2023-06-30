@@ -1,1 +1,1 @@
-![BUFFER](https://github.com/gurbuzkaanakkaya/Buffer_Polygon/assets/103320421/f4a0947c-9cb7-4282-91d8-a7984f6d2676)
+![buff](https://github.com/gurbuzkaanakkaya/Polygon-Buffering-Algorithm/assets/103320421/3473446d-45b8-40e9-ae18-f3732ec365be)
