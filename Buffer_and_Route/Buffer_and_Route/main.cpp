@@ -88,7 +88,7 @@ pair<vector<vector<Point>>, vector<Point>> buffered_point(const vector<vector<Po
             if (abs(point_of_bisector_x - current_vertex.x) < 1e-12 &&
                 abs(point_of_bisector_y - current_vertex.y) < 1e-12) {
 
-                new_point_x         = current_vertex.x + 0.000000000000001;
+                new_point_x         = current_vertex.x + ignored_value_d;
                 Point new_point(new_point_x, current_vertex.y);
                 control_vertices[1] = new_point;
             }
