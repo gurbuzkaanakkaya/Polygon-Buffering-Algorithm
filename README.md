@@ -3,8 +3,8 @@
 
      A polygon buffered based on the Haversine distance
 
-Creating an instance of the QApplication class:
-With the line QApplication app(argc, argv);, an instance of the QApplication class is created. This is necessary to start a Qt-based application. The app variable provides control over the Qt application.
+     Creating an instance of the QApplication class:
+     With the line QApplication app(argc, argv);, an instance of the QApplication class is created. This is necessary to start a Qt-based application. The app           variable provides control over the Qt application.
 
 Creating an instance of the QGraphicsScene class:
 With the line QGraphicsScene scene;, an instance of the QGraphicsScene class is created. This object represents a scene that contains graphics items and graphical elements. The scene variable provides control over this scene.
