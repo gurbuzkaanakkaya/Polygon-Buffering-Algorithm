@@ -190,7 +190,7 @@ int main(int argc, char* argv[])
     int desiredHeight = 600; 
 
     for (const auto& polygon : vertices_list) {
-        // Create a QPolygonF to store the polygon's points
+        
         QPolygonF qPolygon;
 
         for (const auto& point : polygon) {
@@ -201,7 +201,7 @@ int main(int argc, char* argv[])
 
         QGraphicsPolygonItem* polygonItem = new QGraphicsPolygonItem(qPolygon);
 
-        // Add the polygon item to the scene
+        
         scene.addItem(polygonItem);
     }
 
