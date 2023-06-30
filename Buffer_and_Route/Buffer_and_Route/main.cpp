@@ -3,35 +3,35 @@
 #include <QGraphicsScene>
 #include <QGraphicsPolygonItem>
 #include <QGraphicsView>
-#include <QPolygonF>
+#include <QPolygonF>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <deque>
+#include <deque>
 #include "Buffer.h"
 #include "Geometry.h"
 
-using namespace std;
+using namespace std;
 
 double haversine_distance(double latitude1, double longitude1, double latitude2, double longitude2) {
     const double earth_radius = 6371000.0;
 
-    latitude1_radian   = latitude1  * M_PI / 180.0;
-    longitude1_radian  = longitude1 * M_PI / 180.0;
-    latitude2_radian   = latitude2  * M_PI / 180.0;
-    longitude2_radian  = longitude2 * M_PI / 180.0;
+    latitude1_radian                = latitude1             * M_PI / 180.0;
+    longitude1_radian               = longitude1            * M_PI / 180.0;
+    latitude2_radian                = latitude2             * M_PI / 180.0;
+    longitude2_radian               = longitude2            * M_PI / 180.0;
 
-    delta_lat          = latitude2_radian  - latitude1_radian;
-    delta_lon          = longitude2_radian - longitude1_radian;
+    delta_lat                       = latitude2_radian      - latitude1_radian;
+    delta_lon                       = longitude2_radian     - longitude1_radian;
 
-    center_angle_of_circle_arc = sin(delta_lat / 2)    * sin(delta_lat / 2) +
-                                 cos(latitude1_radian) * cos(latitude2_radian) *
-                                 sin(delta_lon / 2)    * sin(delta_lon / 2);
+    center_angle_of_circle_arc      = sin(delta_lat / 2)    * sin(delta_lat / 2)    +
+                                      cos(latitude1_radian) * cos(latitude2_radian) *
+                                      sin(delta_lon / 2)    * sin(delta_lon / 2);
 
-    total_angle_of_the_circular_arc = 2                * atan2(sqrt(center_angle_of_circle_arc),
-                                                         sqrt(1 - center_angle_of_circle_arc));
+    total_angle_of_the_circular_arc = 2                     * atan2(sqrt(center_angle_of_circle_arc),
+                                                              sqrt(1 - center_angle_of_circle_arc));
 
-    haversine_distance_d = earth_radius * total_angle_of_the_circular_arc;
+    haversine_distance_d            = earth_radius          * total_angle_of_the_circular_arc;
 
     return haversine_distance_d;
 }
@@ -47,8 +47,8 @@ bool is_vertex_convex(const vector<Point>& vertices, int vertex_index) {
     latitude3_radian  = vertices[(vertex_index + 1) % size_of_list].x;
     longitude3_radian = vertices[(vertex_index + 1) % size_of_list].y;
 
-    cross_product = (latitude2_radian - latitude1_radian) * (longitude3_radian - longitude2_radian) -
-                    (longitude2_radian - longitude1_radian) * (latitude3_radian - latitude2_radian);
+    cross_product     = (latitude2_radian  - latitude1_radian)  * (longitude3_radian - longitude2_radian) -
+                        (longitude2_radian - longitude1_radian) * (latitude3_radian  - latitude2_radian);
 
     return cross_product > 0;
 }
@@ -62,31 +62,33 @@ pair<vector<vector<Point>>, vector<Point>> buffered_point(const vector<vector<Po
         deque<Point> poly_coord;
 
         for (size_t index = 0; index < size_of_list; ++index) {
+
             const Point& current_vertex    = poly[index];
             const Point& prev_vertex       = poly[(index + size_of_list - 1) % size_of_list];
             const Point& next_vertex       = poly[(index + 1) % size_of_list];
 
-            vector<Point> control_vertices = { Point(prev_vertex.x, prev_vertex.y),
-                                               Point(current_vertex.x, current_vertex.y),
-                                               Point(next_vertex.x, next_vertex.y) };
+            vector<Point> control_vertices = {Point(prev_vertex.x,    prev_vertex.y),
+                                              Point(current_vertex.x, current_vertex.y),
+                                              Point(next_vertex.x,    next_vertex.y)};
 
             first_second_vertex_distance   = haversine_distance(current_vertex.x, current_vertex.y,
-                                                                prev_vertex.x, prev_vertex.y);
+                                                                prev_vertex.x,    prev_vertex.y);
 
             second_third_vertex_distance   = haversine_distance(current_vertex.x, current_vertex.y,
-                                                                next_vertex.x, next_vertex.y);
+                                                                next_vertex.x,    next_vertex.y);
 
-            third_first_x_dist             = next_vertex.x - prev_vertex.x;
-            third_first_y_dist             = next_vertex.y - prev_vertex.y;
+            third_first_x_dist             = next_vertex.x                - prev_vertex.x;
+            third_first_y_dist             = next_vertex.y                - prev_vertex.y;
 
             total_rate                     = first_second_vertex_distance + second_third_vertex_distance;
 
-            point_of_bisector_x            = prev_vertex.x + ((third_first_x_dist / total_rate) * first_second_vertex_distance);
-            point_of_bisector_y            = prev_vertex.y + ((third_first_y_dist / total_rate) * first_second_vertex_distance);
+            point_of_bisector_x            = prev_vertex.x                + ((third_first_x_dist / total_rate) * first_second_vertex_distance);
+            point_of_bisector_y            = prev_vertex.y                + ((third_first_y_dist / total_rate) * first_second_vertex_distance);
 
             if (abs(point_of_bisector_x - current_vertex.x) < 1e-12 &&
                 abs(point_of_bisector_y - current_vertex.y) < 1e-12) {
-                new_point_x = current_vertex.x + 0.000000000000001;
+
+                new_point_x         = current_vertex.x + 0.000000000000001;
                 Point new_point(new_point_x, current_vertex.y);
                 control_vertices[1] = new_point;
             }
@@ -131,8 +133,8 @@ double calculateScaleFactor(const vector<vector<Point>>& polygons, int desiredWi
         }
     }
 
-    double scaleX = desiredWidth / maxX;
-    double scaleY = desiredHeight / maxY;
+    double scaleX      = desiredWidth  / maxX;
+    double scaleY      = desiredHeight / maxY;
 
     double scaleFactor = min(scaleX, scaleY);
 
