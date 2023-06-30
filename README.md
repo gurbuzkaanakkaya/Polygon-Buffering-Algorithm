@@ -5,7 +5,7 @@
 
 
      Creating an instance of the QGraphicsScene class:
-With the line QGraphicsScene scene;, an instance of the QGraphicsScene class is created. This object represents a scene that contains graphics items and graphical elements. The scene variable provides control over this scene.
+     With the line QGraphicsScene scene;, an instance of the QGraphicsScene class is created. This object represents a scene that contains graphics items and            graphical elements. The scene variable provides control over this scene.
 
 Defining empty vectors for the coordinate list and polygon list:
 The lines vector<Point> coordinate_list; and vector<vector<Point>> polygon_list; define empty vectors. coordinate_list is the vector that holds the coordinates, and polygon_list is the vector that holds the polygons.
