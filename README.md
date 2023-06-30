@@ -1,5 +1,3 @@
-![b2564d6c-8b85-4304-a743-00e923670a1a](https://github.com/gurbuzkaanakkaya/Polygon-Buffering-Algorithm/assets/103320421/4ec3f70f-4575-44c7-8269-a0eea8b39057)
-
 
 • Creating an instance of the QGraphicsScene class: An instance of the QGraphicsScene class is created by declaring the variable "scene" with the line 
   "QGraphicsScene scene;". This object represents a scene that contains graphics items and graphical elements. It provides control over the scene.
@@ -28,3 +26,6 @@
 • An object of the QRectF class is created to define the boundaries of the scene and set the scene's bounding rectangle using the items within it.
 
 • An object of the QGraphicsView class is created, and its size is set to display the scene properly.
+
+          ![b2564d6c-8b85-4304-a743-00e923670a1a](https://github.com/gurbuzkaanakkaya/Polygon-Buffering-Algorithm/assets/103320421/4ec3f70f-4575-44c7-8269-a0eea8b39057)
+
