@@ -187,7 +187,7 @@ int main(int argc, char* argv[])
     vector<vector<Point>> vertices_list;
     vector<Point> vertices_list_t;
 
-    tie(vertices_list, vertices_list_t) = buffered_point(polygon_list,1000);
+    tie(vertices_list, vertices_list_t) = buffered_point(polygon_list);
 
     int desiredWidth = 800;  
     int desiredHeight = 600; 
