@@ -117,9 +117,9 @@ pair<vector<vector<Point>>, vector<Point>> buffered_point(const vector<vector<Po
     return make_pair(vertices_list, vertices_list_t);
 }
 
-double calculateScaleFactor(const vector<Point>& polygon, int desiredWidth, int desiredHeight)
+double calculateScaleFactor(const vector<Point>& all_vertices, int desiredWidth, int desiredHeight)
 {
-        for (const auto& point : polygon) {
+        for (const auto& point : all_vertices) {
             maxX = (point.x > maxX) ? point.x : maxX;
            
             maxY = (point.y > maxY) ? point.y : maxY;
