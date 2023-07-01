@@ -117,16 +117,13 @@ pair<vector<vector<Point>>, vector<Point>> buffered_point(const vector<vector<Po
     return make_pair(vertices_list, vertices_list_t);
 }
 
-double calculateScaleFactor(const vector<vector<Point>>& polygons, int desiredWidth, int desiredHeight)
+double calculateScaleFactor(const vector<Point>& polygon, int desiredWidth, int desiredHeight)
 {
-    
-    for (const auto& polygon : polygons) {
         for (const auto& point : polygon) {
             maxX = (point.x > maxX) ? point.x : maxX;
            
             maxY = (point.y > maxY) ? point.y : maxY;
         }
-    }
 
     double scaleX      = desiredWidth  / maxX;
     double scaleY      = desiredHeight / maxY;
@@ -192,8 +189,8 @@ int main(int argc, char* argv[])
 
         for (const auto& point : polygon) {
             
-            qPolygon << QPointF(point.x * (calculateScaleFactor(vertices_list, desiredWidth, desiredHeight)),
-                                point.y * (calculateScaleFactor(vertices_list, desiredWidth, desiredHeight)));
+            qPolygon << QPointF(point.x * (calculateScaleFactor(polygon, desiredWidth, desiredHeight)),
+                                point.y * (calculateScaleFactor(polygon, desiredWidth, desiredHeight)));
         }
 
         QGraphicsPolygonItem* polygonItem = new QGraphicsPolygonItem(qPolygon);
