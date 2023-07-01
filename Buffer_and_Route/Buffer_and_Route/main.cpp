@@ -184,14 +184,20 @@ int main(int argc, char* argv[])
     int desiredWidth = 800;  
     int desiredHeight = 600; 
 
+    double scale_factor = calculateScaleFactor(vertices_list_t, desiredWidth, desiredHeight);
     for (const auto& polygon : vertices_list) {
         QPolygonF qPolygon;
 
         for (const auto& point : polygon) {
             
-            qPolygon << QPointF(point.x * (calculateScaleFactor(polygon, desiredWidth, desiredHeight)),
-                                point.y * (calculateScaleFactor(polygon, desiredWidth, desiredHeight)));
+            qPolygon << QPointF(point.x * (scale_factor),
+                                point.y * (scale_factor));
         }
+
+        QGraphicsPolygonItem* polygonItem = new QGraphicsPolygonItem(qPolygon);
+
+        scene.addItem(polygonItem);
+    }
 
         QGraphicsPolygonItem* polygonItem = new QGraphicsPolygonItem(qPolygon);
 
