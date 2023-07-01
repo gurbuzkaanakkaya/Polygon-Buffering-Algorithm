@@ -6,6 +6,8 @@
 
 const double ignored_value_d{ 0.000000000000001 };
 
+double maxX, maxY { std::numeric_limits<double>::min() };
+
 double latitude1_radian;
 double longitude1_radian;
 double latitude2_radian;
