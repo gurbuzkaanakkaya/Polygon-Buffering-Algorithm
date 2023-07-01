@@ -119,17 +119,12 @@ pair<vector<vector<Point>>, vector<Point>> buffered_point(const vector<vector<Po
 
 double calculateScaleFactor(const vector<vector<Point>>& polygons, int desiredWidth, int desiredHeight)
 {
-    double maxX = numeric_limits<double>::min();
-    double maxY = numeric_limits<double>::min();
-
+    
     for (const auto& polygon : polygons) {
         for (const auto& point : polygon) {
-            if (point.x > maxX) {
-                maxX = point.x;
-            }
-            if (point.y > maxY) {
-                maxY = point.y;
-            }
+            maxX = (point.x > maxX) ? point.x : maxX;
+           
+            maxY = (point.y > maxY) ? point.y : maxY;
         }
     }
 
