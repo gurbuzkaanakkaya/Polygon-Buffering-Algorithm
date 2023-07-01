@@ -1,5 +1,5 @@
 
-# Polygon Buffering Algorithm: Generating Buffer Points
+#Polygon Buffering Algorithm: Generating Buffer Points
 
 The project reads data from a file called "Coordinates.txt" and processes coordinates and polygons stored within it. It uses vectors to store the coordinates and polygons. The project includes functions for buffering polygons based on a specified distance and calculating the scale factor based on desired dimensions. The QGraphicsScene and QGraphicsPolygonItem classes are utilized to visually represent the buffered polygons within a scene. The QRectF class defines the scene boundaries, and the QGraphicsView class displays the scene properly.
 
