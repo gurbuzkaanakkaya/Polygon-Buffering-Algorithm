@@ -54,7 +54,8 @@ In this project, I have developed an algorithm that reads data from a file calle
   
 ## Output
 
-![b2564d6c-8b85-4304-a743-00e923670a1a](https://github.com/gurbuzkaanakkaya/Polygon-Buffering-Algorithm/assets/103320421/8f239647-180b-43d0-ab02-5b5fc6cef9ac)
+
+![250209472-8f239647-180b-43d0-ab02-5b5fc6cef9ac](https://github.com/gurbuzkaanakkaya/Polygon-Buffering-Algorithm/assets/103320421/4c21364e-104d-4b22-84dd-02e3a71ca32d)
 
 
   
